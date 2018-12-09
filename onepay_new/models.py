@@ -2,8 +2,14 @@
 
 from datetime import datetime
 
-from onepay_new import db
 from flask_login import UserMixin
+from flask_bootstrap import Bootstrap
+from flask_moment import Moment
+from flask_sqlalchemy import SQLAlchemy
+
+db = SQLAlchemy()
+bootstrap = Bootstrap()
+moment = Moment()
 
 class Admin(db.Model,UserMixin):
     id = db.Column(db.Integer, primary_key=True)

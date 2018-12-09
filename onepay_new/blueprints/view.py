@@ -1,19 +1,21 @@
 # -*- coding: utf-8 -*-
 
-from flask import flash, redirect, url_for, render_template ,jsonify ,request
+from flask import flash, redirect, url_for, render_template ,jsonify ,request ,current_app ,Blueprint
 
-from onepay_new import app, db, commands
 from onepay_new.forms import LoginForm, RegisterForm
 from onepay_new.models import Admin
 from onepay_new.commands import redirect_back
+from onepay_new.models import db
 
 from flask_login import login_user
 
-@app.route('/', methods=['GET', 'POST'])
+view_bp = Blueprint('view', __name__)
+
+@view_bp.route('/')
 def index():
     return render_template('index.html')
 
-@app.route('/login', methods=['GET', 'POST'])
+@view_bp.route('/login', methods=['GET', 'POST'])
 def login():
     form = LoginForm()
     if form.validate_on_submit():
@@ -21,11 +23,7 @@ def login():
         username = form.username.data
         password = form.password.data
         remember = form.remember.data
-        app.logger.info(username)
-        app.logger.info(password)
         admin = Admin.query.filter_by(username=username).first()
-        app.logger.info(admin.username)
-        app.logger.info(admin.password)
         if admin:
             if username == admin.username and password == admin.password :
                 flash('Welcome back.', 'info')
@@ -35,7 +33,7 @@ def login():
             flash('No account.', 'warning')
     return render_template('login.html', form=form)
 
-@app.route('/register', methods=['GET', 'POST'])
+@view_bp.route('/register', methods=['GET', 'POST'])
 def register():
     form = RegisterForm()
     html = 'register.html'
@@ -45,11 +43,11 @@ def register():
         password = form.password.data
         password_again = form.password_again.data
         phone_number = form.phone_number.data
-        app.logger.info(username)
-        app.logger.info(truename)
-        app.logger.info(password)
-        app.logger.info(password_again)
-        app.logger.info(phone_number)
+        current_app.logger.info(username)
+        current_app.logger.info(truename)
+        current_app.logger.info(password)
+        current_app.logger.info(password_again)
+        current_app.logger.info(phone_number)
         admin = Admin.query.filter_by(username=username).first()
         if admin:
             flash('用户名已经被注册....', 'warning')
@@ -62,10 +60,10 @@ def register():
             return redirect_back()
     return render_template(html, form=form)
 
-@app.route('/onepay', methods=['POST',])
+@view_bp.route('/onepay', methods=['POST',])
 def update_onepay_info():
     onepay_time = request.json['time']
-    app.logger.info(onepay_time)
+    current_app.logger.info(onepay_time)
     onepay_message = request.json['message']
-    app.logger.info(onepay_message)
+    current_app.logger.info(onepay_message)
     return jsonify({'error': 0})

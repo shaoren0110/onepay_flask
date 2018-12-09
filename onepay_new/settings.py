@@ -3,8 +3,6 @@
 import os
 import sys
 
-from onepay_new import app
-
 # sqlite URI compatible
 WIN = sys.platform.startswith('win')
 if WIN:
@@ -12,8 +10,8 @@ if WIN:
 else:
     prefix = 'sqlite:////'
 
-
-dev_db = prefix + os.path.join(os.path.dirname(app.root_path), 'data.db')
+basedir = os.path.abspath(os.path.dirname(os.path.dirname(__file__)))
+dev_db = prefix + os.path.join(basedir, 'data.db')
 
 SECRET_KEY = os.getenv('SECRET_KEY', 'secret string')
 SQLALCHEMY_TRACK_MODIFICATIONS = False
