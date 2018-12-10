@@ -1,0 +1,364 @@
+[2018-12-10 00:34:52 +0800] [20346] [INFO] Starting gunicorn 19.9.0
+[2018-12-10 00:34:52 +0800] [20346] [INFO] Listening at: http://0.0.0.0:5000 (20346)
+[2018-12-10 00:34:52 +0800] [20346] [INFO] Using worker: sync
+[2018-12-10 00:34:52 +0800] [20351] [INFO] Booting worker with pid: 20351
+[2018-12-10 00:34:53 +0800] [20353] [INFO] Booting worker with pid: 20353
+[2018-12-10 00:34:53 +0800] [20354] [INFO] Booting worker with pid: 20354
+[2018-12-10 00:34:53 +0800] [20355] [INFO] Booting worker with pid: 20355
+[2018-12-10 00:37:31 +0800] [20346] [INFO] Handling signal: term
+[2018-12-10 00:37:31 +0800] [20353] [INFO] Worker exiting (pid: 20353)
+[2018-12-10 00:37:31 +0800] [20354] [INFO] Worker exiting (pid: 20354)
+[2018-12-10 00:37:31 +0800] [20355] [INFO] Worker exiting (pid: 20355)
+[2018-12-10 00:37:31 +0800] [20351] [INFO] Worker exiting (pid: 20351)
+[2018-12-10 00:38:33 +0800] [21336] [INFO] Starting gunicorn 19.9.0
+[2018-12-10 00:38:33 +0800] [21336] [INFO] Listening at: http://0.0.0.0:5000 (21336)
+[2018-12-10 00:38:33 +0800] [21336] [INFO] Using worker: sync
+[2018-12-10 00:38:33 +0800] [21339] [INFO] Booting worker with pid: 21339
+[2018-12-10 00:38:33 +0800] [21340] [INFO] Booting worker with pid: 21340
+[2018-12-10 00:38:33 +0800] [21342] [INFO] Booting worker with pid: 21342
+[2018-12-10 00:38:33 +0800] [21343] [INFO] Booting worker with pid: 21343
+[2018-12-10 09:53:14,934] ERROR in app: Exception on /login [POST]
+Traceback (most recent call last):
+  File "/root/www/onepay_flask/venv/lib/python3.5/site-packages/sqlalchemy/util/_collections.py", line 999, in __call__
+    return self.registry[key]
+KeyError: 139903091566400
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/root/www/onepay_flask/venv/lib/python3.5/site-packages/sqlalchemy/dialects/sqlite/pysqlite.py", line 334, in dbapi
+    from pysqlite2 import dbapi2 as sqlite
+ImportError: No module named 'pysqlite2'
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/root/www/onepay_flask/venv/lib/python3.5/site-packages/flask/app.py", line 2292, in wsgi_app
+    response = self.full_dispatch_request()
+  File "/root/www/onepay_flask/venv/lib/python3.5/site-packages/flask/app.py", line 1815, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "/root/www/onepay_flask/venv/lib/python3.5/site-packages/flask/app.py", line 1718, in handle_user_exception
+    reraise(exc_type, exc_value, tb)
+  File "/root/www/onepay_flask/venv/lib/python3.5/site-packages/flask/_compat.py", line 35, in reraise
+    raise value
+  File "/root/www/onepay_flask/venv/lib/python3.5/site-packages/flask/app.py", line 1813, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "/root/www/onepay_flask/venv/lib/python3.5/site-packages/flask/app.py", line 1799, in dispatch_request
+    return self.view_functions[rule.endpoint](**req.view_args)
+  File "/root/www/onepay_flask/onepay_new/blueprints/view.py", line 26, in login
+    admin = Admin.query.filter_by(username=username).first()
+  File "/root/www/onepay_flask/venv/lib/python3.5/site-packages/flask_sqlalchemy/__init__.py", line 514, in __get__
+    return type.query_class(mapper, session=self.sa.session())
+  File "/root/www/onepay_flask/venv/lib/python3.5/site-packages/sqlalchemy/orm/scoping.py", line 74, in __call__
+    return self.registry()
+  File "/root/www/onepay_flask/venv/lib/python3.5/site-packages/sqlalchemy/util/_collections.py", line 1001, in __call__
+    return self.registry.setdefault(key, self.createfunc())
+  File "/root/www/onepay_flask/venv/lib/python3.5/site-packages/sqlalchemy/orm/session.py", line 3010, in __call__
+    return self.class_(**local_kw)
+  File "/root/www/onepay_flask/venv/lib/python3.5/site-packages/flask_sqlalchemy/__init__.py", line 143, in __init__
+    bind = options.pop('bind', None) or db.engine
+  File "/root/www/onepay_flask/venv/lib/python3.5/site-packages/flask_sqlalchemy/__init__.py", line 877, in engine
+    return self.get_engine()
+  File "/root/www/onepay_flask/venv/lib/python3.5/site-packages/flask_sqlalchemy/__init__.py", line 896, in get_engine
+    return connector.get_engine()
+  File "/root/www/onepay_flask/venv/lib/python3.5/site-packages/flask_sqlalchemy/__init__.py", line 559, in get_engine
+    self._engine = rv = sqlalchemy.create_engine(info, **options)
+  File "/root/www/onepay_flask/venv/lib/python3.5/site-packages/sqlalchemy/engine/__init__.py", line 425, in create_engine
+    return strategy.create(*args, **kwargs)
+  File "/root/www/onepay_flask/venv/lib/python3.5/site-packages/sqlalchemy/engine/strategies.py", line 81, in create
+    dbapi = dialect_cls.dbapi(**dbapi_args)
+  File "/root/www/onepay_flask/venv/lib/python3.5/site-packages/sqlalchemy/dialects/sqlite/pysqlite.py", line 339, in dbapi
+    raise e
+  File "/root/www/onepay_flask/venv/lib/python3.5/site-packages/sqlalchemy/dialects/sqlite/pysqlite.py", line 337, in dbapi
+    from sqlite3 import dbapi2 as sqlite  # try 2.5+ stdlib name.
+  File "/usr/local/lib/python3.5/sqlite3/__init__.py", line 23, in <module>
+    from sqlite3.dbapi2 import *
+  File "/usr/local/lib/python3.5/sqlite3/dbapi2.py", line 27, in <module>
+    from _sqlite3 import *
+ImportError: No module named '_sqlite3'
+[2018-12-10 10:10:04,571] ERROR in app: Exception on /login [POST]
+Traceback (most recent call last):
+  File "/root/www/onepay_flask/venv/lib/python3.5/site-packages/sqlalchemy/util/_collections.py", line 999, in __call__
+    return self.registry[key]
+KeyError: 139903091566400
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/root/www/onepay_flask/venv/lib/python3.5/site-packages/sqlalchemy/dialects/sqlite/pysqlite.py", line 334, in dbapi
+    from pysqlite2 import dbapi2 as sqlite
+ImportError: No module named 'pysqlite2'
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/root/www/onepay_flask/venv/lib/python3.5/site-packages/flask/app.py", line 2292, in wsgi_app
+    response = self.full_dispatch_request()
+  File "/root/www/onepay_flask/venv/lib/python3.5/site-packages/flask/app.py", line 1815, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "/root/www/onepay_flask/venv/lib/python3.5/site-packages/flask/app.py", line 1718, in handle_user_exception
+    reraise(exc_type, exc_value, tb)
+  File "/root/www/onepay_flask/venv/lib/python3.5/site-packages/flask/_compat.py", line 35, in reraise
+    raise value
+  File "/root/www/onepay_flask/venv/lib/python3.5/site-packages/flask/app.py", line 1813, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "/root/www/onepay_flask/venv/lib/python3.5/site-packages/flask/app.py", line 1799, in dispatch_request
+    return self.view_functions[rule.endpoint](**req.view_args)
+  File "/root/www/onepay_flask/onepay_new/blueprints/view.py", line 26, in login
+    admin = Admin.query.filter_by(username=username).first()
+  File "/root/www/onepay_flask/venv/lib/python3.5/site-packages/flask_sqlalchemy/__init__.py", line 514, in __get__
+    return type.query_class(mapper, session=self.sa.session())
+  File "/root/www/onepay_flask/venv/lib/python3.5/site-packages/sqlalchemy/orm/scoping.py", line 74, in __call__
+    return self.registry()
+  File "/root/www/onepay_flask/venv/lib/python3.5/site-packages/sqlalchemy/util/_collections.py", line 1001, in __call__
+    return self.registry.setdefault(key, self.createfunc())
+  File "/root/www/onepay_flask/venv/lib/python3.5/site-packages/sqlalchemy/orm/session.py", line 3010, in __call__
+    return self.class_(**local_kw)
+  File "/root/www/onepay_flask/venv/lib/python3.5/site-packages/flask_sqlalchemy/__init__.py", line 143, in __init__
+    bind = options.pop('bind', None) or db.engine
+  File "/root/www/onepay_flask/venv/lib/python3.5/site-packages/flask_sqlalchemy/__init__.py", line 877, in engine
+    return self.get_engine()
+  File "/root/www/onepay_flask/venv/lib/python3.5/site-packages/flask_sqlalchemy/__init__.py", line 896, in get_engine
+    return connector.get_engine()
+  File "/root/www/onepay_flask/venv/lib/python3.5/site-packages/flask_sqlalchemy/__init__.py", line 559, in get_engine
+    self._engine = rv = sqlalchemy.create_engine(info, **options)
+  File "/root/www/onepay_flask/venv/lib/python3.5/site-packages/sqlalchemy/engine/__init__.py", line 425, in create_engine
+    return strategy.create(*args, **kwargs)
+  File "/root/www/onepay_flask/venv/lib/python3.5/site-packages/sqlalchemy/engine/strategies.py", line 81, in create
+    dbapi = dialect_cls.dbapi(**dbapi_args)
+  File "/root/www/onepay_flask/venv/lib/python3.5/site-packages/sqlalchemy/dialects/sqlite/pysqlite.py", line 339, in dbapi
+    raise e
+  File "/root/www/onepay_flask/venv/lib/python3.5/site-packages/sqlalchemy/dialects/sqlite/pysqlite.py", line 337, in dbapi
+    from sqlite3 import dbapi2 as sqlite  # try 2.5+ stdlib name.
+  File "/usr/local/lib/python3.5/sqlite3/__init__.py", line 23, in <module>
+    from sqlite3.dbapi2 import *
+  File "/usr/local/lib/python3.5/sqlite3/dbapi2.py", line 27, in <module>
+    from _sqlite3 import *
+ImportError: No module named '_sqlite3'
+[2018-12-10 10:15:54,802] ERROR in app: Exception on /login [POST]
+Traceback (most recent call last):
+  File "/root/www/onepay_flask/venv/lib/python3.5/site-packages/sqlalchemy/engine/base.py", line 1193, in _execute_context
+    context)
+  File "/root/www/onepay_flask/venv/lib/python3.5/site-packages/sqlalchemy/engine/default.py", line 509, in do_execute
+    cursor.execute(statement, parameters)
+sqlite3.OperationalError: no such table: admin
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "/root/www/onepay_flask/venv/lib/python3.5/site-packages/flask/app.py", line 2292, in wsgi_app
+    response = self.full_dispatch_request()
+  File "/root/www/onepay_flask/venv/lib/python3.5/site-packages/flask/app.py", line 1815, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "/root/www/onepay_flask/venv/lib/python3.5/site-packages/flask/app.py", line 1718, in handle_user_exception
+    reraise(exc_type, exc_value, tb)
+  File "/root/www/onepay_flask/venv/lib/python3.5/site-packages/flask/_compat.py", line 35, in reraise
+    raise value
+  File "/root/www/onepay_flask/venv/lib/python3.5/site-packages/flask/app.py", line 1813, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "/root/www/onepay_flask/venv/lib/python3.5/site-packages/flask/app.py", line 1799, in dispatch_request
+    return self.view_functions[rule.endpoint](**req.view_args)
+  File "/root/www/onepay_flask/onepay_new/blueprints/view.py", line 26, in login
+    admin = Admin.query.filter_by(username=username).first()
+  File "/root/www/onepay_flask/venv/lib/python3.5/site-packages/sqlalchemy/orm/query.py", line 2895, in first
+    ret = list(self[0:1])
+  File "/root/www/onepay_flask/venv/lib/python3.5/site-packages/sqlalchemy/orm/query.py", line 2687, in __getitem__
+    return list(res)
+  File "/root/www/onepay_flask/venv/lib/python3.5/site-packages/sqlalchemy/orm/query.py", line 2995, in __iter__
+    return self._execute_and_instances(context)
+  File "/root/www/onepay_flask/venv/lib/python3.5/site-packages/sqlalchemy/orm/query.py", line 3018, in _execute_and_instances
+    result = conn.execute(querycontext.statement, self._params)
+  File "/root/www/onepay_flask/venv/lib/python3.5/site-packages/sqlalchemy/engine/base.py", line 948, in execute
+    return meth(self, multiparams, params)
+  File "/root/www/onepay_flask/venv/lib/python3.5/site-packages/sqlalchemy/sql/elements.py", line 269, in _execute_on_connection
+    return connection._execute_clauseelement(self, multiparams, params)
+  File "/root/www/onepay_flask/venv/lib/python3.5/site-packages/sqlalchemy/engine/base.py", line 1060, in _execute_clauseelement
+    compiled_sql, distilled_params
+  File "/root/www/onepay_flask/venv/lib/python3.5/site-packages/sqlalchemy/engine/base.py", line 1200, in _execute_context
+    context)
+  File "/root/www/onepay_flask/venv/lib/python3.5/site-packages/sqlalchemy/engine/base.py", line 1413, in _handle_dbapi_exception
+    exc_info
+  File "/root/www/onepay_flask/venv/lib/python3.5/site-packages/sqlalchemy/util/compat.py", line 265, in raise_from_cause
+    reraise(type(exception), exception, tb=exc_tb, cause=cause)
+  File "/root/www/onepay_flask/venv/lib/python3.5/site-packages/sqlalchemy/util/compat.py", line 248, in reraise
+    raise value.with_traceback(tb)
+  File "/root/www/onepay_flask/venv/lib/python3.5/site-packages/sqlalchemy/engine/base.py", line 1193, in _execute_context
+    context)
+  File "/root/www/onepay_flask/venv/lib/python3.5/site-packages/sqlalchemy/engine/default.py", line 509, in do_execute
+    cursor.execute(statement, parameters)
+sqlalchemy.exc.OperationalError: (sqlite3.OperationalError) no such table: admin [SQL: 'SELECT admin.id AS admin_id, admin.username AS admin_username, admin.truename AS admin_truename, admin.password AS admin_password, admin.phone_number AS admin_phone_number \nFROM admin \nWHERE admin.username = ?\n LIMIT ? OFFSET ?'] [parameters: ('红将军', 1, 0)] (Background on this error at: http://sqlalche.me/e/e3q8)
+[2018-12-10 10:16:05 +0800] [21336] [INFO] Handling signal: term
+[2018-12-10 10:16:05 +0800] [21340] [INFO] Worker exiting (pid: 21340)
+[2018-12-10 10:16:05 +0800] [21342] [INFO] Worker exiting (pid: 21342)
+[2018-12-10 10:16:05 +0800] [21343] [INFO] Worker exiting (pid: 21343)
+[2018-12-10 10:16:05 +0800] [21339] [INFO] Worker exiting (pid: 21339)
+[2018-12-10 10:16:16 +0800] [18341] [INFO] Starting gunicorn 19.9.0
+[2018-12-10 10:16:16 +0800] [18341] [INFO] Listening at: http://0.0.0.0:5000 (18341)
+[2018-12-10 10:16:16 +0800] [18341] [INFO] Using worker: sync
+[2018-12-10 10:16:16 +0800] [18346] [INFO] Booting worker with pid: 18346
+[2018-12-10 10:16:16 +0800] [18348] [INFO] Booting worker with pid: 18348
+[2018-12-10 10:16:16 +0800] [18349] [INFO] Booting worker with pid: 18349
+[2018-12-10 10:16:16 +0800] [18350] [INFO] Booting worker with pid: 18350
+[2018-12-10 10:16:28,631] ERROR in app: Exception on /login [POST]
+Traceback (most recent call last):
+  File "/root/www/onepay_flask/venv/lib/python3.5/site-packages/sqlalchemy/engine/base.py", line 1193, in _execute_context
+    context)
+  File "/root/www/onepay_flask/venv/lib/python3.5/site-packages/sqlalchemy/engine/default.py", line 509, in do_execute
+    cursor.execute(statement, parameters)
+sqlite3.OperationalError: no such table: admin
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "/root/www/onepay_flask/venv/lib/python3.5/site-packages/flask/app.py", line 2292, in wsgi_app
+    response = self.full_dispatch_request()
+  File "/root/www/onepay_flask/venv/lib/python3.5/site-packages/flask/app.py", line 1815, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "/root/www/onepay_flask/venv/lib/python3.5/site-packages/flask/app.py", line 1718, in handle_user_exception
+    reraise(exc_type, exc_value, tb)
+  File "/root/www/onepay_flask/venv/lib/python3.5/site-packages/flask/_compat.py", line 35, in reraise
+    raise value
+  File "/root/www/onepay_flask/venv/lib/python3.5/site-packages/flask/app.py", line 1813, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "/root/www/onepay_flask/venv/lib/python3.5/site-packages/flask/app.py", line 1799, in dispatch_request
+    return self.view_functions[rule.endpoint](**req.view_args)
+  File "/root/www/onepay_flask/onepay_new/blueprints/view.py", line 26, in login
+    admin = Admin.query.filter_by(username=username).first()
+  File "/root/www/onepay_flask/venv/lib/python3.5/site-packages/sqlalchemy/orm/query.py", line 2895, in first
+    ret = list(self[0:1])
+  File "/root/www/onepay_flask/venv/lib/python3.5/site-packages/sqlalchemy/orm/query.py", line 2687, in __getitem__
+    return list(res)
+  File "/root/www/onepay_flask/venv/lib/python3.5/site-packages/sqlalchemy/orm/query.py", line 2995, in __iter__
+    return self._execute_and_instances(context)
+  File "/root/www/onepay_flask/venv/lib/python3.5/site-packages/sqlalchemy/orm/query.py", line 3018, in _execute_and_instances
+    result = conn.execute(querycontext.statement, self._params)
+  File "/root/www/onepay_flask/venv/lib/python3.5/site-packages/sqlalchemy/engine/base.py", line 948, in execute
+    return meth(self, multiparams, params)
+  File "/root/www/onepay_flask/venv/lib/python3.5/site-packages/sqlalchemy/sql/elements.py", line 269, in _execute_on_connection
+    return connection._execute_clauseelement(self, multiparams, params)
+  File "/root/www/onepay_flask/venv/lib/python3.5/site-packages/sqlalchemy/engine/base.py", line 1060, in _execute_clauseelement
+    compiled_sql, distilled_params
+  File "/root/www/onepay_flask/venv/lib/python3.5/site-packages/sqlalchemy/engine/base.py", line 1200, in _execute_context
+    context)
+  File "/root/www/onepay_flask/venv/lib/python3.5/site-packages/sqlalchemy/engine/base.py", line 1413, in _handle_dbapi_exception
+    exc_info
+  File "/root/www/onepay_flask/venv/lib/python3.5/site-packages/sqlalchemy/util/compat.py", line 265, in raise_from_cause
+    reraise(type(exception), exception, tb=exc_tb, cause=cause)
+  File "/root/www/onepay_flask/venv/lib/python3.5/site-packages/sqlalchemy/util/compat.py", line 248, in reraise
+    raise value.with_traceback(tb)
+  File "/root/www/onepay_flask/venv/lib/python3.5/site-packages/sqlalchemy/engine/base.py", line 1193, in _execute_context
+    context)
+  File "/root/www/onepay_flask/venv/lib/python3.5/site-packages/sqlalchemy/engine/default.py", line 509, in do_execute
+    cursor.execute(statement, parameters)
+sqlalchemy.exc.OperationalError: (sqlite3.OperationalError) no such table: admin [SQL: 'SELECT admin.id AS admin_id, admin.username AS admin_username, admin.truename AS admin_truename, admin.password AS admin_password, admin.phone_number AS admin_phone_number \nFROM admin \nWHERE admin.username = ?\n LIMIT ? OFFSET ?'] [parameters: ('红将军gps', 1, 0)] (Background on this error at: http://sqlalche.me/e/e3q8)
+[2018-12-10 10:28:15,039] ERROR in app: Exception on /register [POST]
+Traceback (most recent call last):
+  File "/root/www/onepay_flask/venv/lib/python3.5/site-packages/sqlalchemy/engine/base.py", line 1193, in _execute_context
+    context)
+  File "/root/www/onepay_flask/venv/lib/python3.5/site-packages/sqlalchemy/engine/default.py", line 509, in do_execute
+    cursor.execute(statement, parameters)
+sqlite3.OperationalError: no such table: admin
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "/root/www/onepay_flask/venv/lib/python3.5/site-packages/flask/app.py", line 2292, in wsgi_app
+    response = self.full_dispatch_request()
+  File "/root/www/onepay_flask/venv/lib/python3.5/site-packages/flask/app.py", line 1815, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "/root/www/onepay_flask/venv/lib/python3.5/site-packages/flask/app.py", line 1718, in handle_user_exception
+    reraise(exc_type, exc_value, tb)
+  File "/root/www/onepay_flask/venv/lib/python3.5/site-packages/flask/_compat.py", line 35, in reraise
+    raise value
+  File "/root/www/onepay_flask/venv/lib/python3.5/site-packages/flask/app.py", line 1813, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "/root/www/onepay_flask/venv/lib/python3.5/site-packages/flask/app.py", line 1799, in dispatch_request
+    return self.view_functions[rule.endpoint](**req.view_args)
+  File "/root/www/onepay_flask/onepay_new/blueprints/view.py", line 51, in register
+    admin = Admin.query.filter_by(username=username).first()
+  File "/root/www/onepay_flask/venv/lib/python3.5/site-packages/sqlalchemy/orm/query.py", line 2895, in first
+    ret = list(self[0:1])
+  File "/root/www/onepay_flask/venv/lib/python3.5/site-packages/sqlalchemy/orm/query.py", line 2687, in __getitem__
+    return list(res)
+  File "/root/www/onepay_flask/venv/lib/python3.5/site-packages/sqlalchemy/orm/query.py", line 2995, in __iter__
+    return self._execute_and_instances(context)
+  File "/root/www/onepay_flask/venv/lib/python3.5/site-packages/sqlalchemy/orm/query.py", line 3018, in _execute_and_instances
+    result = conn.execute(querycontext.statement, self._params)
+  File "/root/www/onepay_flask/venv/lib/python3.5/site-packages/sqlalchemy/engine/base.py", line 948, in execute
+    return meth(self, multiparams, params)
+  File "/root/www/onepay_flask/venv/lib/python3.5/site-packages/sqlalchemy/sql/elements.py", line 269, in _execute_on_connection
+    return connection._execute_clauseelement(self, multiparams, params)
+  File "/root/www/onepay_flask/venv/lib/python3.5/site-packages/sqlalchemy/engine/base.py", line 1060, in _execute_clauseelement
+    compiled_sql, distilled_params
+  File "/root/www/onepay_flask/venv/lib/python3.5/site-packages/sqlalchemy/engine/base.py", line 1200, in _execute_context
+    context)
+  File "/root/www/onepay_flask/venv/lib/python3.5/site-packages/sqlalchemy/engine/base.py", line 1413, in _handle_dbapi_exception
+    exc_info
+  File "/root/www/onepay_flask/venv/lib/python3.5/site-packages/sqlalchemy/util/compat.py", line 265, in raise_from_cause
+    reraise(type(exception), exception, tb=exc_tb, cause=cause)
+  File "/root/www/onepay_flask/venv/lib/python3.5/site-packages/sqlalchemy/util/compat.py", line 248, in reraise
+    raise value.with_traceback(tb)
+  File "/root/www/onepay_flask/venv/lib/python3.5/site-packages/sqlalchemy/engine/base.py", line 1193, in _execute_context
+    context)
+  File "/root/www/onepay_flask/venv/lib/python3.5/site-packages/sqlalchemy/engine/default.py", line 509, in do_execute
+    cursor.execute(statement, parameters)
+sqlalchemy.exc.OperationalError: (sqlite3.OperationalError) no such table: admin [SQL: 'SELECT admin.id AS admin_id, admin.username AS admin_username, admin.truename AS admin_truename, admin.password AS admin_password, admin.phone_number AS admin_phone_number \nFROM admin \nWHERE admin.username = ?\n LIMIT ? OFFSET ?'] [parameters: ('红将军', 1, 0)] (Background on this error at: http://sqlalche.me/e/e3q8)
+[2018-12-10 10:28:26,749] ERROR in app: Exception on /register [POST]
+Traceback (most recent call last):
+  File "/root/www/onepay_flask/venv/lib/python3.5/site-packages/sqlalchemy/engine/base.py", line 1193, in _execute_context
+    context)
+  File "/root/www/onepay_flask/venv/lib/python3.5/site-packages/sqlalchemy/engine/default.py", line 509, in do_execute
+    cursor.execute(statement, parameters)
+sqlite3.OperationalError: no such table: admin
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "/root/www/onepay_flask/venv/lib/python3.5/site-packages/flask/app.py", line 2292, in wsgi_app
+    response = self.full_dispatch_request()
+  File "/root/www/onepay_flask/venv/lib/python3.5/site-packages/flask/app.py", line 1815, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "/root/www/onepay_flask/venv/lib/python3.5/site-packages/flask/app.py", line 1718, in handle_user_exception
+    reraise(exc_type, exc_value, tb)
+  File "/root/www/onepay_flask/venv/lib/python3.5/site-packages/flask/_compat.py", line 35, in reraise
+    raise value
+  File "/root/www/onepay_flask/venv/lib/python3.5/site-packages/flask/app.py", line 1813, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "/root/www/onepay_flask/venv/lib/python3.5/site-packages/flask/app.py", line 1799, in dispatch_request
+    return self.view_functions[rule.endpoint](**req.view_args)
+  File "/root/www/onepay_flask/onepay_new/blueprints/view.py", line 51, in register
+    admin = Admin.query.filter_by(username=username).first()
+  File "/root/www/onepay_flask/venv/lib/python3.5/site-packages/sqlalchemy/orm/query.py", line 2895, in first
+    ret = list(self[0:1])
+  File "/root/www/onepay_flask/venv/lib/python3.5/site-packages/sqlalchemy/orm/query.py", line 2687, in __getitem__
+    return list(res)
+  File "/root/www/onepay_flask/venv/lib/python3.5/site-packages/sqlalchemy/orm/query.py", line 2995, in __iter__
+    return self._execute_and_instances(context)
+  File "/root/www/onepay_flask/venv/lib/python3.5/site-packages/sqlalchemy/orm/query.py", line 3018, in _execute_and_instances
+    result = conn.execute(querycontext.statement, self._params)
+  File "/root/www/onepay_flask/venv/lib/python3.5/site-packages/sqlalchemy/engine/base.py", line 948, in execute
+    return meth(self, multiparams, params)
+  File "/root/www/onepay_flask/venv/lib/python3.5/site-packages/sqlalchemy/sql/elements.py", line 269, in _execute_on_connection
+    return connection._execute_clauseelement(self, multiparams, params)
+  File "/root/www/onepay_flask/venv/lib/python3.5/site-packages/sqlalchemy/engine/base.py", line 1060, in _execute_clauseelement
+    compiled_sql, distilled_params
+  File "/root/www/onepay_flask/venv/lib/python3.5/site-packages/sqlalchemy/engine/base.py", line 1200, in _execute_context
+    context)
+  File "/root/www/onepay_flask/venv/lib/python3.5/site-packages/sqlalchemy/engine/base.py", line 1413, in _handle_dbapi_exception
+    exc_info
+  File "/root/www/onepay_flask/venv/lib/python3.5/site-packages/sqlalchemy/util/compat.py", line 265, in raise_from_cause
+    reraise(type(exception), exception, tb=exc_tb, cause=cause)
+  File "/root/www/onepay_flask/venv/lib/python3.5/site-packages/sqlalchemy/util/compat.py", line 248, in reraise
+    raise value.with_traceback(tb)
+  File "/root/www/onepay_flask/venv/lib/python3.5/site-packages/sqlalchemy/engine/base.py", line 1193, in _execute_context
+    context)
+  File "/root/www/onepay_flask/venv/lib/python3.5/site-packages/sqlalchemy/engine/default.py", line 509, in do_execute
+    cursor.execute(statement, parameters)
+sqlalchemy.exc.OperationalError: (sqlite3.OperationalError) no such table: admin [SQL: 'SELECT admin.id AS admin_id, admin.username AS admin_username, admin.truename AS admin_truename, admin.password AS admin_password, admin.phone_number AS admin_phone_number \nFROM admin \nWHERE admin.username = ?\n LIMIT ? OFFSET ?'] [parameters: ('红将军', 1, 0)] (Background on this error at: http://sqlalche.me/e/e3q8)
+[2018-12-10 12:25:34 +0800] [19698] [INFO] Starting gunicorn 19.9.0
+[2018-12-10 12:25:34 +0800] [19698] [INFO] Listening at: http://0.0.0.0:5000 (19698)
+[2018-12-10 12:25:34 +0800] [19698] [INFO] Using worker: sync
+[2018-12-10 12:25:34 +0800] [19706] [INFO] Booting worker with pid: 19706
+[2018-12-10 12:25:35 +0800] [19708] [INFO] Booting worker with pid: 19708
+[2018-12-10 12:25:35 +0800] [19709] [INFO] Booting worker with pid: 19709
+[2018-12-10 12:25:35 +0800] [19710] [INFO] Booting worker with pid: 19710
