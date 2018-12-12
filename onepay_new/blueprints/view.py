@@ -3,10 +3,13 @@
 from flask import flash, redirect, url_for, render_template ,jsonify ,request ,current_app ,Blueprint
 
 from onepay_new.forms import LoginForm, RegisterForm
-from onepay_new.models import Admin
+from onepay_new.models import Admin, Onepay
 from onepay_new.commands import redirect_back
 from onepay_new.models import db
 
+pay_flag = 0
+
+import json
 from flask_login import login_user
 
 view_bp = Blueprint('view', __name__)
@@ -43,11 +46,6 @@ def register():
         password = form.password.data
         password_again = form.password_again.data
         phone_number = form.phone_number.data
-        current_app.logger.info(username)
-        current_app.logger.info(truename)
-        current_app.logger.info(password)
-        current_app.logger.info(password_again)
-        current_app.logger.info(phone_number)
         admin = Admin.query.filter_by(username=username).first()
         if admin:
             flash('用户名已经被注册....', 'warning')
@@ -57,13 +55,56 @@ def register():
             db.session.add(admin)
             db.session.commit()
             flash('register success....', 'info')
-            return redirect_back()
+            return redirect_back('view.login')
     return render_template(html, form=form)
 
-@view_bp.route('/onepay', methods=['POST',])
+
+@view_bp.route('/pay', methods=['GET', 'POST'])
+def pay():
+    return render_template('pay.html')
+
+@view_bp.route('/pay/test', methods=['GET', 'POST'])
+def test():
+    global pay_flag
+    if pay_flag == 0:
+        return jsonify({'error': 0})
+    else:
+        return jsonify({'error': 1})
+
+@view_bp.route('/paysuccess', methods=['GET', 'POST'])
+def paysuccess():
+    return render_template('paysuccess.html')
+
+@view_bp.route('/api/login', methods=['POST'])
+def check_login():
+    onepayname = request.json['name']
+    onepaypass = request.json['password']
+    check = Admin.query.filter_by(username=onepayname).first()
+    if check:
+        if  onepaypass == check.password:
+            return jsonify({'error': 0})
+        else:
+            return jsonify({'error': 2})
+    else:
+        return jsonify({'error': 1})
+
+
+@view_bp.route('/api/onepay', methods=['POST'])
 def update_onepay_info():
+    global pay_flag
     onepay_time = request.json['time']
-    current_app.logger.info(onepay_time)
-    onepay_message = request.json['message']
-    current_app.logger.info(onepay_message)
-    return jsonify({'error': 0})
+    onepay_type = request.json['type']
+    onepay_money = request.json['money']
+    if onepay_type == '1' or onepay_type == '2':
+        onepay = Onepay(paytime=onepay_time, paytype=onepay_type, paymoney=onepay_money)
+        db.session.add(onepay)
+        db.session.commit()
+        pay_flag = 1
+        return jsonify({'error': 0})
+    else:
+        return jsonify({'error': 1})
+
+@view_bp.route('/api/clear', methods=['GET', 'POST'])
+def clear():
+    global pay_flag
+    pay_flag = 0

@@ -7,6 +7,7 @@
     <link rel="icon" href="{{ url_for('static', filename='favicon.ico') }}">
     <link rel="stylesheet" href="{{ url_for('static', filename='css/bootstrap.min.css') }}" type="text/css">
     <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}" type="text/css">
+     <script type="text/javascript" src="https://cdn.staticfile.org/jquery/1.11.1/jquery.min.js"></script>
 </head>
 <body>
 <main class="container">
@@ -24,10 +25,5 @@
     {% block content %}{% endblock %}
 </main>
 
-<script type="text/javascript" src="{{ url_for('static', filename='js/jquery-3.2.1.slim.min.js') }}"></script>
-<script type="text/javascript" src="{{ url_for('static', filename='js/popper.min.js') }}"></script>
-<script type="text/javascript" src="{{ url_for('static', filename='js/bootstrap.min.js') }}"></script>
-<script type="text/javascript" src="{{ url_for('static', filename='js/script.js') }}"></script>
-{{ moment.include_moment(local_js=url_for('static', filename='js/moment-with-locales.min.js')) }}
 </body>
 </html>

@@ -17,3 +17,9 @@ class Admin(db.Model,UserMixin):
     truename = db.Column(db.String(20))
     password = db.Column(db.String(20))
     phone_number = db.Column(db.String(20))
+
+class Onepay(db.Model, UserMixin):
+    id = db.Column(db.Integer, primary_key=True)
+    paytime = db.Column(db.String(20))
+    paytype = db.Column(db.String(2))
+    paymoney = db.Column(db.String(20))
