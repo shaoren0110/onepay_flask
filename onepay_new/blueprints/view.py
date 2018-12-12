@@ -108,3 +108,4 @@ def update_onepay_info():
 def clear():
     global pay_flag
     pay_flag = 0
+    return jsonify({'error': 0})
