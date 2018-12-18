@@ -4,6 +4,7 @@ from flask import Flask
 import click
 from onepay_new.blueprints.view import view_bp
 from onepay_new.models import bootstrap, db, moment
+from onepay_new.models import Payflag
 
 def create_app(config_name=None):
     app = Flask('onepay_new')
@@ -27,4 +28,7 @@ def register_commands(app):
             db.drop_all()
             click.echo('Drop tables.')
         db.create_all()
+        payflag = Payflag(flag=0)
+        db.session.add(payflag)
+        db.session.commit()
         click.echo('Initialized database.')

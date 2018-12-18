@@ -3,13 +3,10 @@
 from flask import flash, redirect, url_for, render_template ,jsonify ,request ,current_app ,Blueprint
 
 from onepay_new.forms import LoginForm, RegisterForm
-from onepay_new.models import Admin, Onepay
+from onepay_new.models import Admin, Onepay, Payflag
 from onepay_new.commands import redirect_back
 from onepay_new.models import db
 import logging
-
-global pay_flag
-pay_flag = 0
 
 import json
 from flask_login import login_user
@@ -67,17 +64,18 @@ def pay():
 
 @view_bp.route('/pay/test', methods=['GET', 'POST'])
 def test():
-    global pay_flag
-    logging.debug(" pay_flag is %d " % pay_flag)
-    if pay_flag == 0:
+    payflag = Payflag.query.filter_by(id=1).first()
+    logging.debug(" pay_flag is %d " % payflag.flag)
+    if payflag.flag == 0:
         return jsonify({'error': 0})
     else:
         return jsonify({'error': 1})
 
 @view_bp.route('/pay/clear', methods=['GET', 'POST'])
 def clear():
-    global pay_flag
-    pay_flag = 0
+    payflag = Payflag.query.filter_by(id=1).first()
+    payflag.flag = 0
+    db.session.commit()
     logging.debug("clear pay_flag ")
     return jsonify({'error': 0})
 
@@ -102,7 +100,7 @@ def check_login():
 
 @view_bp.route('/api/onepay', methods=['POST'])
 def update_onepay_info():
-    global pay_flag
+    payflag = Payflag.query.filter_by(id=1).first()
     onepay_time = request.json['time']
     onepay_type = request.json['type']
     onepay_money = request.json['money']
@@ -113,7 +111,8 @@ def update_onepay_info():
         onepay = Onepay(paytime=onepay_time, paytype=onepay_type, paymoney=onepay_money)
         db.session.add(onepay)
         db.session.commit()
-        pay_flag = 1
+        payflag.flag = 1
+        db.session.commit()
         return jsonify({'error': 0})
     else:
         return jsonify({'error': 1})

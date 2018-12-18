@@ -23,3 +23,7 @@ class Onepay(db.Model, UserMixin):
     paytime = db.Column(db.String(20))
     paytype = db.Column(db.String(2))
     paymoney = db.Column(db.String(20))
+
+class Payflag(db.Model, UserMixin):
+    id = db.Column(db.Integer, primary_key=True)
+    flag = db.Column(db.Integer, primary_key=False)
