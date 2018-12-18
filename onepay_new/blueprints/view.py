@@ -8,6 +8,7 @@ from onepay_new.commands import redirect_back
 from onepay_new.models import db
 import logging
 
+global pay_flag
 pay_flag = 0
 
 import json
