@@ -6,6 +6,7 @@ from onepay_new.forms import LoginForm, RegisterForm
 from onepay_new.models import Admin, Onepay
 from onepay_new.commands import redirect_back
 from onepay_new.models import db
+import logging
 
 pay_flag = 0
 
@@ -66,7 +67,7 @@ def pay():
 @view_bp.route('/pay/test', methods=['GET', 'POST'])
 def test():
     global pay_flag
-    print("set pay_flag is %d " % pay_flag)
+    logging.debug("set pay_flag is %d " % pay_flag)
     if pay_flag == 0:
         return jsonify({'error': 0})
     else:
@@ -76,7 +77,7 @@ def test():
 def clear():
     global pay_flag
     pay_flag = 0
-    print("clear pay_flag ")
+    logging.debug("clear pay_flag ")
     return jsonify({'error': 0})
 
 
@@ -104,10 +105,9 @@ def update_onepay_info():
     onepay_time = request.json['time']
     onepay_type = request.json['type']
     onepay_money = request.json['money']
-    print("set onepay_time is %d " % onepay_time)
-    print("set onepay_type is %d " % onepay_type)
-    print("set onepay_money is %d " % onepay_money)
-
+    logging.debug("set onepay_time is %d " % onepay_time)
+    logging.debug("set onepay_type is %d " % onepay_type)
+    logging.debug("set onepay_money is %d " % onepay_money)
     if onepay_type == '1' or onepay_type == '2':
         onepay = Onepay(paytime=onepay_time, paytype=onepay_type, paymoney=onepay_money)
         db.session.add(onepay)
