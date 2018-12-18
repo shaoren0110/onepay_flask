@@ -67,7 +67,7 @@ def pay():
 @view_bp.route('/pay/test', methods=['GET', 'POST'])
 def test():
     global pay_flag
-    logging.debug("set pay_flag is %d " % pay_flag)
+    logging.debug(" pay_flag is %d " % pay_flag)
     if pay_flag == 0:
         return jsonify({'error': 0})
     else:
