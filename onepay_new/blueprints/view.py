@@ -105,9 +105,9 @@ def update_onepay_info():
     onepay_time = request.json['time']
     onepay_type = request.json['type']
     onepay_money = request.json['money']
-    logging.debug("set onepay_time is %d " % onepay_time)
-    logging.debug("set onepay_type is %d " % onepay_type)
-    logging.debug("set onepay_money is %d " % onepay_money)
+    logging.debug("set onepay_time is %s " % onepay_time)
+    logging.debug("set onepay_type is %s " % onepay_type)
+    logging.debug("set onepay_money is %s " % onepay_money)
     if onepay_type == '1' or onepay_type == '2':
         onepay = Onepay(paytime=onepay_time, paytype=onepay_type, paymoney=onepay_money)
         db.session.add(onepay)
