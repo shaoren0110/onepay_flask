@@ -66,10 +66,19 @@ def pay():
 @view_bp.route('/pay/test', methods=['GET', 'POST'])
 def test():
     global pay_flag
+    print("set pay_flag is %d " % pay_flag)
     if pay_flag == 0:
         return jsonify({'error': 0})
     else:
         return jsonify({'error': 1})
+
+@view_bp.route('/pay/clear', methods=['GET', 'POST'])
+def clear():
+    global pay_flag
+    pay_flag = 0
+    print("clear pay_flag ")
+    return jsonify({'error': 0})
+
 
 @view_bp.route('/paysuccess', methods=['GET', 'POST'])
 def paysuccess():
@@ -95,6 +104,10 @@ def update_onepay_info():
     onepay_time = request.json['time']
     onepay_type = request.json['type']
     onepay_money = request.json['money']
+    print("set onepay_time is %d " % onepay_time)
+    print("set onepay_type is %d " % onepay_type)
+    print("set onepay_money is %d " % onepay_money)
+
     if onepay_type == '1' or onepay_type == '2':
         onepay = Onepay(paytime=onepay_time, paytype=onepay_type, paymoney=onepay_money)
         db.session.add(onepay)
@@ -103,9 +116,3 @@ def update_onepay_info():
         return jsonify({'error': 0})
     else:
         return jsonify({'error': 1})
-
-@view_bp.route('/api/clear', methods=['GET', 'POST'])
-def clear():
-    global pay_flag
-    pay_flag = 0
-    return jsonify({'error': 0})

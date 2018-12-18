@@ -2,10 +2,7 @@
 {% block title %}支付宝测试{% endblock %}
 {% block content %}
     <div class="container">
-        <img src="static/logo_alipay.jpg" class="rounded mx-auto d-block" alt="Cinque Terre" width="260" height="76">
-    </div>
-    <div class="container">
-        <img src="static/test.png" class="rounded mx-auto d-block" alt="Cinque Terre" width="200" height="200">
+        <img src="static/test.jpg" class="rounded mx-auto d-block" alt="Cinque Terre" width="500" height="700">
     </div>
     <div class="time-item" style = "padding-top: 10px">
         <div class="time-item" id="msg"><h3>请扫码支付，可用时间：</h3></div>
@@ -40,15 +37,24 @@
                 qrcode_timeout();
                 clearInterval(myTimer);
             }
-            intDiff = intDiff-2;
+            intDiff = intDiff-1;
 
             checkdata();
 
-        }, 2000);
+        }, 1000);
     }
 
     function qrcode_timeout(){
          $('#msg').html("<h1>支付超时</h1>");
+    }
+    function cleardata()
+     {
+        $.get("/pay/clear",
+        function(data)
+        {
+            $('#msg').html("<h1>支付成功,标志已清除</h1>");
+        }
+        );
     }
      function checkdata()
      {
@@ -59,6 +65,7 @@
             {
                 window.clearInterval(myTimer);
                 $('#msg').html("<h1>支付成功</h1>");
+                cleardata();
             }
         }
         );
